@@ -1,5 +1,5 @@
 class Book {
-  final String cover, title, author, status, date;
+  String cover, title, author, status, date;
 
   Book({
     this.cover,
@@ -27,7 +27,7 @@ List<Book> books = [
       title: 'Jogos Vorazes',
       author: 'Suzanne Collins',
       status: 'Indisponível',
-      date: '0',
+      date: '11/05/2021',
       cover: 'assets/images/jogos-vorazes.jpg'),
   Book(
       title: 'Em Chamas',
@@ -51,7 +51,7 @@ List<Book> books = [
       title: 'Harry Potter e a Câmara Secreta',
       author: 'J.K. Rowling',
       status: 'Indisponível',
-      date: '0',
+      date: '08/05/2021',
       cover: 'assets/images/hp-e-a-camara-secreta.jpg'),
   Book(
       title: 'Harry Potter e o Cálice de Fogo',
