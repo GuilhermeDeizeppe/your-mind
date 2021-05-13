@@ -18,7 +18,7 @@ class Body extends StatelessWidget {
         ),
         itemBuilder: (context, index) => ItemCard(
           book: books[index],
-          press: () => Navigator.push(
+          press: () => Navigator.pushReplacement(
             context,
             MaterialPageRoute(
               builder: (context) => DetailsScreen(

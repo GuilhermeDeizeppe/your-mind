@@ -113,16 +113,13 @@ class _DetailsBodyState extends State<DetailsBody> {
               children: [
                 FloatingActionButton.extended(
                   onPressed: () => Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => UpdateScreen(book: book))),
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => UpdateScreen(book: book)),
+                  ),
                   elevation: 5.0,
                   splashColor:
                       book.status == 'Disponível' ? Colors.red : Colors.green,
-                  icon: Icon(
-                    Icons.save_rounded,
-                    size: 25,
-                  ),
                   label: Text(
                     'Alterar',
                     style: TextStyle(fontSize: 17),
@@ -131,121 +128,14 @@ class _DetailsBodyState extends State<DetailsBody> {
                   foregroundColor: Colors.black,
                 ),
               ],
-            )
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.center,
-            //   children: [
-            //     SizedBox(
-            //       height: 30.0,
-            //       width: MediaQuery.of(context).size.width / 1.5,
-            //       child: TextField(
-            //         // inputFormatters: [], CRIAR DEPOIS A MÁSCARA PARA ACEITAR APENAS DATAS
-            //         keyboardType: TextInputType.datetime,
-            //         onChanged: (text) {
-            //           newDate = text;
-            //         },
-            //         decoration: InputDecoration(
-            //           labelText: book.date != '0'
-            //               ? 'Data de devolução'
-            //               : 'Data de retirada',
-            //           border: OutlineInputBorder(),
-            //         ),
-            //       ),
-            //     ),
-            //   ],
-            // ),
-            // Padding(
-            //   padding: const EdgeInsets.all(8.0),
-            //   child: Row(
-            //     mainAxisAlignment: MainAxisAlignment.center,
-            //     children: [
-            //       IconButton(
-            //           icon: Icon(Icons.save_rounded),
-            //           splashColor: Colors.indigo,
-            //           iconSize: 30,
-            //           onPressed: () {
-            //             button_logic();
-            //           }),
-            //       GestureDetector(
-            //         child: Text(
-            //           'Salvar',
-            //           textAlign: TextAlign.center,
-            //           style: TextStyle(
-            //             color: Colors.black,
-            //             fontSize: 17,
-            //             fontWeight: FontWeight.bold,
-            //           ),
-            //         ),
-            //         onTap: () {},
-            //       ),
-            //     ],
-            //   ),
-            // ),
+            ),
+            SizedBox(
+              height: 30.0,
+              width: MediaQuery.of(context).size.width,
+            ),
           ],
         ),
       ),
     );
   }
-
-  // void button_logic() {
-  //   if (newDate != 'vazio' && newDate != '') {
-  //     if (book.status == 'Disponível') {
-  //       if (newDate != '0') {
-  //         setState(() {
-  //           book.status = 'Indisponível';
-  //         });
-  //       }
-  //     } else if (newDate != '0') {
-  //       if (book.status != 'Disponível') {
-  //         setState(() {
-  //           book.status = 'Indisponível';
-  //         });
-  //       }
-  //     } else if (book.status == 'Indisponível') {
-  //       if (newDate != '0') {
-  //         setState(() {
-  //           book.status = 'Indisponível';
-  //         });
-  //       } else if (newDate == '0') {
-  //         setState(() {
-  //           book.status = 'Disponível';
-  //         });
-  //       }
-  //     }
-  //     setState(() {
-  //       book.date = newDate;
-  //     });
-  //   }
-
-  //   if (newDate != '0' && newDate != 'vazio' && newDate != '') {
-  //     Stack(
-  //       children: [
-  //         Container(
-  //           color: Colors.transparent,
-  //           child: SizedBox(
-  //             height: MediaQuery.of(context).size.height / 2,
-  //             width: MediaQuery.of(context).size.width,
-  //             child: Container(
-  //               color: Colors.green,
-  //               child: Column(
-  //                 children: [
-  //                   Text('Digite o nome do responsável pelo livro'),
-  //                   TextField(
-  //                     onChanged: (resp) {
-  //                       String newResp = resp;
-  //                     },
-  //                     decoration: InputDecoration(
-  //                       labelText: 'Responsável',
-  //                       border: OutlineInputBorder(),
-  //                     ),
-  //                   )
-  //                 ],
-  //               ),
-  //             ),
-  //           ),
-  //         )
-  //       ],
-  //     );
-  //   }
-  // }
 }
