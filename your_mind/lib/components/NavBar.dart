@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:your_mind/home_screen.dart';
+import 'package:your_mind/search_screen.dart';
 
 class NavBar extends StatelessWidget {
   @override
@@ -35,7 +36,12 @@ class NavBar extends StatelessWidget {
               children: [
                 IconButton(
                   icon: Icon(Icons.search),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SearchScreen()));
+                  },
                   iconSize: 35,
                   splashColor: Colors.indigo,
                   tooltip: 'Buscar',

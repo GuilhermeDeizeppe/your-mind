@@ -192,6 +192,11 @@ class _UpdateScreenState extends State<UpdateScreen> {
   }
 
   void updateStatus() {
+    // caso a data informada seja diferente de 0, mesmo sendo maior que a data de
+    // retirada, o aplicativo retornará o status 'Indisponível'.
+    // para alterar o status do livro para 'Disponível', por favor, insira a
+    // data igual a '0'.
+
     if (book.date == '0') {
       setState(() {
         book.date = '0';
