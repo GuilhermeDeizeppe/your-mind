@@ -142,7 +142,8 @@ class _UpdateScreenState extends State<UpdateScreen> {
                     labelText: book.clientName == '0'
                         ? 'Responsável'
                         : book.clientName,
-                    border: OutlineInputBorder(),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25)),
                   ),
                   enabled: book.clientName == '0' ? true : false,
                 ),
@@ -158,7 +159,8 @@ class _UpdateScreenState extends State<UpdateScreen> {
                     labelText: book.date != '0'
                         ? 'Data de devolução'
                         : 'Data de retirada',
-                    border: OutlineInputBorder(),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25)),
                   ),
                 ),
               ),

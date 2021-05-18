@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:your_mind/create_screen.dart';
 import 'package:your_mind/home_screen.dart';
 import 'package:your_mind/search_screen.dart';
 
@@ -6,7 +7,7 @@ class NavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
-      elevation: 1,
+      elevation: 0,
       color: Colors.white,
       child: Container(
         height: 70.0,
@@ -58,14 +59,17 @@ class NavBar extends StatelessWidget {
             Column(
               children: [
                 IconButton(
-                  icon: Icon(Icons.person),
-                  onPressed: () {},
+                  icon: Icon(Icons.add_circle_outline_sharp),
+                  onPressed: () {
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => CreateBook()));
+                  },
                   iconSize: 35,
                   splashColor: Colors.indigo,
-                  tooltip: 'Perfil',
+                  tooltip: 'Criar',
                 ),
                 Text(
-                  'Entrar',
+                  'Criar',
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,

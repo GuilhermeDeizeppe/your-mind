@@ -124,4 +124,12 @@ List<Book> books = [
     cover: 'assets/images/a-menina-que-roubava-livros.jpg',
     clientName: '0',
   ),
+  // Book(
+  //   title: 'HP',
+  //   author: 'eu',
+  //   status: 'Indisponível',
+  //   date: '15/05/2021',
+  //   cover: 'assets/images/hp-e-a-ordem-da-fenix.jpg',
+  //   clientName: 'que penakkkk',
+  // ),
 ];

@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:your_mind/details_screen.dart';
-import 'package:your_mind/models/books.dart';
 
 import 'item_card.dart';
+import '../models/books.dart';
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
+  @override
+  _BodyState createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     return Padding(
