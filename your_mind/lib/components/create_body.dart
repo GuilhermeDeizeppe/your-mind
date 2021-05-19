@@ -12,6 +12,7 @@ class _CreateBodyState extends State<CreateBody> {
   String title;
   String author;
   String cover;
+  Book newBook;
 
   @override
   Widget build(BuildContext context) {
@@ -90,16 +91,11 @@ class _CreateBodyState extends State<CreateBody> {
                             {
                               if (cover != '' && cover != '0' && cover != null)
                                 {
-                                  books.add(
-                                    Book(
-                                      title: title,
-                                      author: author,
-                                      cover: cover,
-                                      clientName: '0',
-                                      date: '0',
-                                      status: 'Disponível',
-                                    ),
-                                  ),
+                                  newBook = new Book(cover, title, author,
+                                      'Disponível', '0', '0'),
+                                  setState(() {
+                                    Book.books.add(newBook);
+                                  }),
                                 }
                             }
                         },

@@ -1,135 +1,123 @@
 class Book {
   String cover, title, author, status, date, clientName;
+  static List<Book> books = [
+    Book('assets/images/1984.jpg', '1984', 'George Orwell', 'Disponível', '0',
+        '0'),
+    Book('assets/images/a-revolucao-dos-bichos.jpg', 'A Revolução dos Bichos',
+        'George Orwell', 'Disponível', '0', '0'),
+    Book('assets/images/jogos-vorazes.jpg', 'Jogos Vorazes', 'Suzanne Collins',
+        'Indisponível', '11/05/2021', 'Pedro Henrique'),
+    Book('assets/images/em-chamas.jpg', 'Em Chamas', 'Suzanne Collins',
+        'Disponível', '0', '0'),
+    Book('assets/images/a-esperanca.jpg', 'A Esperança', 'Suzanne Collins',
+        'Disponível', '0', '0'),
+    Book(
+        'assets/images/hp-e-a-pedra-filosofal.jpg',
+        'Harry Potter e a Pedra Filosofal',
+        'J.K. Rowling',
+        'Disponível',
+        '0',
+        '0'),
+    Book(
+        'assets/images/hp-e-a-camara-secreta.jpg',
+        'Harry Potter e a Câmara Secreta',
+        'J.K. Rowling',
+        'Indisponível',
+        '15/05/2021',
+        'Renato Gomes'),
+    Book(
+        'assets/images/hp-e-o-calice-de-fogo.jpg',
+        'Harry Potter e a Câmara Secreta',
+        'J.K. Rowling',
+        'Disponível',
+        '0',
+        '0'),
+    Book(
+        'assets/images/hp-e-o-prisioneiro-de-azkaban.jpg',
+        'Harry Potter e o Prisioneiro de Azkaban',
+        'J.K. Rowling',
+        'Indisponível',
+        '18/05/2021',
+        'Guilherme Rodrigues'),
+    Book('assets/images/o-magico-de-oz.jpg', 'O Mágico de Oz', 'L. Frank Baum',
+        'Indisponível', '17/05/2021', 'Nicole Andrade'),
+    Book('assets/images/o-pequeno-principe.jpg', 'O Pequeno Príncipe',
+        'Antoine De Saint-exupéry', 'Disponível', '0', '0'),
+    Book('assets/images/o-que-o-sol-faz-com-as-flores.jpg',
+        'O Que o Sol Faz Com as Flores', 'Rupi Kaur', 'Disponível', '0', '0'),
+    Book('assets/images/outros-jeitos-de-usar-a-boca.jpg',
+        'Outros Jeitos de Usar a Boca', 'Rupi Kaur', 'Disponível', '0', '0'),
+    Book('assets/images/a-menina-que-roubava-livros.jpg',
+        'A Menina Que Roubava Livros', 'Markus Zusak', 'Disponível', '0', '0'),
+  ];
 
-  Book({
-    this.cover,
-    this.title,
-    this.author,
-    this.status,
-    this.date,
-    this.clientName,
-  });
+  // static void addToBooks(Book newBook) {
+  //   Book.books.add(newBook);
+  // }
+
+  Book(String cover, String title, String author, String status, String date,
+      String clientName) {
+    this.cover = cover;
+    this.title = title;
+    this.author = author;
+    this.status = status;
+    this.date = date;
+    this.clientName = clientName;
+  }
+
+  // static void createInitialLibrary() {
+  //   addToBooks(Book('assets/images/1984.jpg', '1984', 'George Orwell',
+  //       'Disponível', '0', '0'));
+  //   addToBooks(Book('assets/images/a-revolucao-dos-bichos.jpg',
+  //       'A Revolução dos Bichos', 'George Orwell', 'Disponível', '0', '0'));
+  //   addToBooks(Book('assets/images/jogos-vorazes.jpg', 'Jogos Vorazes',
+  //       'Suzanne Collins', 'Indisponível', '11/05/2021', 'Pedro Henrique'));
+  //   addToBooks(Book('assets/images/em-chamas.jpg', 'Em Chamas',
+  //       'Suzanne Collins', 'Disponível', '0', '0'));
+  //   addToBooks(Book('assets/images/a-esperanca.jpg', 'A Esperança',
+  //       'Suzanne Collins', 'Disponível', '0', '0'));
+  //   addToBooks(Book(
+  //       'assets/images/hp-e-a-pedra-filosofal.jpg',
+  //       'Harry Potter e a Pedra Filosofal',
+  //       'J.K. Rowling',
+  //       'Disponível',
+  //       '0',
+  //       '0'));
+  //   addToBooks(Book(
+  //       'assets/images/hp-e-a-camara-secreta.jpg',
+  //       'Harry Potter e a Câmara Secreta',
+  //       'J.K. Rowling',
+  //       'Indisponível',
+  //       '15/05/2021',
+  //       'Renato Gomes'));
+  //   addToBooks(Book(
+  //       'assets/images/hp-e-o-calice-de-fogo.jpg',
+  //       'Harry Potter e a Câmara Secreta',
+  //       'J.K. Rowling',
+  //       'Disponível',
+  //       '0',
+  //       '0'));
+  //   addToBooks(Book(
+  //       'assets/images/hp-e-o-prisioneiro-de-azkaban.jpg',
+  //       'Harry Potter e o Prisioneiro de Azkaban',
+  //       'J.K. Rowling',
+  //       'Indisponível',
+  //       '18/05/2021',
+  //       'Guilherme Rodrigues'));
+  //   addToBooks(Book('assets/images/o-magico-de-oz.jpg', 'O Mágico de Oz',
+  //       'L. Frank Baum', 'Indisponível', '17/05/2021', 'Nicole Andrade'));
+  //   addToBooks(Book(
+  //       'assets/images/o-pequeno-principe.jpg',
+  //       'O Pequeno Príncipe',
+  //       'Antoine De Saint-exupéry',
+  //       'Disponível',
+  //       '0',
+  //       '0'));
+  //   addToBooks(Book('assets/images/o-que-o-sol-faz-com-as-flores.jpg',
+  //       'O Que o Sol Faz Com as Flores', 'Rupi Kaur', 'Disponível', '0', '0'));
+  //   addToBooks(Book('assets/images/outros-jeitos-de-usar-a-boca.jpg',
+  //       'Outros Jeitos de Usar a Boca', 'Rupi Kaur', 'Disponível', '0', '0'));
+  //   addToBooks(Book('assets/images/a-menina-que-roubava-livros.jpg',
+  //       'A Menina Que Roubava Livros', 'Markus Zusak', 'Disponível', '0', '0'));
+  // }
 }
-
-List<Book> books = [
-  Book(
-    title: '1984',
-    author: 'George Orwell',
-    status: 'Disponível',
-    date: '0',
-    cover: 'assets/images/1984.jpg',
-    clientName: '0',
-  ),
-  Book(
-    title: 'A Revolução dos Bichos',
-    author: 'George Orwell',
-    status: 'Disponível',
-    date: '0',
-    cover: 'assets/images/a-revolucao-dos-bichos.jpg',
-    clientName: '0',
-  ),
-  Book(
-    title: 'Jogos Vorazes',
-    author: 'Suzanne Collins',
-    status: 'Indisponível',
-    date: '11/05/2021',
-    cover: 'assets/images/jogos-vorazes.jpg',
-    clientName: 'Pedro Henrique',
-  ),
-  Book(
-    title: 'Em Chamas',
-    author: 'Suzanne Collins',
-    status: 'Disponível',
-    date: '0',
-    cover: 'assets/images/em-chamas.jpg',
-    clientName: '0',
-  ),
-  Book(
-    title: 'A Esperança',
-    author: 'Suzanne Collins',
-    status: 'Disponível',
-    date: '0',
-    cover: 'assets/images/a-esperanca.jpg',
-    clientName: '0',
-  ),
-  Book(
-    title: 'Harry Potter e a Pedra Filosofal',
-    author: 'J.K. Rowling',
-    status: 'Disponível',
-    date: '0',
-    cover: 'assets/images/hp-e-a-pedra-filosofal.jpg',
-    clientName: '0',
-  ),
-  Book(
-    title: 'Harry Potter e a Câmara Secreta',
-    author: 'J.K. Rowling',
-    status: 'Indisponível',
-    date: '08/05/2021',
-    cover: 'assets/images/hp-e-a-camara-secreta.jpg',
-    clientName: 'Renato Gomes',
-  ),
-  Book(
-    title: 'Harry Potter e o Cálice de Fogo',
-    author: 'J.K. Rowling',
-    status: 'Disponível',
-    date: '0',
-    cover: 'assets/images/hp-e-o-calice-de-fogo.jpg',
-    clientName: '0',
-  ),
-  Book(
-    title: 'Harry Potter e o Prisioneiro de Azkaban',
-    author: 'J.K. Rowling',
-    status: 'Disponível',
-    date: '0',
-    cover: 'assets/images/hp-e-o-prisioneiro-de-azkaban.jpg',
-    clientName: '0',
-  ),
-  Book(
-    title: 'O Mágico de Oz',
-    author: 'L. Frank Baum',
-    status: 'Disponível',
-    date: '0',
-    cover: 'assets/images/o-magico-de-oz.jpg',
-    clientName: '0',
-  ),
-  Book(
-    title: 'O Pequeno Príncipe',
-    author: 'Antoine De Saint-exupéry',
-    status: 'Disponível',
-    date: '0',
-    cover: 'assets/images/o-pequeno-principe.jpg',
-    clientName: '0',
-  ),
-  Book(
-    title: 'O Que o Sol Faz Com as Flores',
-    author: 'Rupi Kaur',
-    status: 'Disponível',
-    date: '0',
-    cover: 'assets/images/o-que-o-sol-faz-com-as-flores.jpg',
-    clientName: '0',
-  ),
-  Book(
-    title: 'Outros Jeitos de Usar a Boca',
-    author: 'Rupi Kaur',
-    status: 'Disponível',
-    date: '0',
-    cover: 'assets/images/outros-jeitos-de-usar-a-boca.jpg',
-    clientName: '0',
-  ),
-  Book(
-    title: 'A Menina Que Roubava Livros',
-    author: 'Markus Zusak',
-    status: 'Disponível',
-    date: '0',
-    cover: 'assets/images/a-menina-que-roubava-livros.jpg',
-    clientName: '0',
-  ),
-  // Book(
-  //   title: 'HP',
-  //   author: 'eu',
-  //   status: 'Indisponível',
-  //   date: '15/05/2021',
-  //   cover: 'assets/images/hp-e-a-ordem-da-fenix.jpg',
-  //   clientName: 'que penakkkk',
-  // ),
-];

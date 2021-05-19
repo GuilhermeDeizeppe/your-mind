@@ -15,19 +15,19 @@ class _BodyState extends State<Body> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GridView.builder(
-        itemCount: books.length,
+        itemCount: Book.books.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           childAspectRatio: 0.70,
           crossAxisSpacing: 5.0,
         ),
         itemBuilder: (context, index) => ItemCard(
-          book: books[index],
+          book: Book.books[index],
           press: () => Navigator.pushReplacement(
             context,
             MaterialPageRoute(
               builder: (context) => DetailsScreen(
-                book: books[index],
+                book: Book.books[index],
               ),
             ),
           ),
