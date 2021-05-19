@@ -27,7 +27,7 @@ class Book {
         'Renato Gomes'),
     Book(
         'assets/images/hp-e-o-calice-de-fogo.jpg',
-        'Harry Potter e a Câmara Secreta',
+        'Harry Potter e o Cálice de Fogo',
         'J.K. Rowling',
         'Disponível',
         '0',

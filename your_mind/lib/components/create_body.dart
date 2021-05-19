@@ -45,7 +45,7 @@ class _CreateBodyState extends State<CreateBody> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(10.0, 35.0, 10.0, 15.0),
                   child: TextField(
-                    onSubmitted: (title) {
+                    onChanged: (title) {
                       this.title = title;
                     },
                     decoration: InputDecoration(
@@ -58,8 +58,8 @@ class _CreateBodyState extends State<CreateBody> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(10.0, 20.0, 10.0, 15.0),
                   child: TextField(
-                    onSubmitted: (author) {
-                      this.author = title;
+                    onChanged: (author) {
+                      this.author = author;
                     },
                     decoration: InputDecoration(
                       labelText: 'Autor',
@@ -71,7 +71,7 @@ class _CreateBodyState extends State<CreateBody> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(10.0, 20.0, 10.0, 15.0),
                   child: TextField(
-                    onSubmitted: (cover) {
+                    onChanged: (cover) {
                       this.cover = cover;
                     },
                     decoration: InputDecoration(
@@ -96,6 +96,10 @@ class _CreateBodyState extends State<CreateBody> {
                                   setState(() {
                                     Book.books.add(newBook);
                                   }),
+                                  // for (Book i in Book.books)  // teste pra saber se o novo livro estava sendo inserido corretamente.
+                                  //   {
+                                  //     print(i.title),
+                                  //   }
                                 }
                             }
                         },

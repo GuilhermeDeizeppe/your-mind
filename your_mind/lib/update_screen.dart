@@ -136,7 +136,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
                   onChanged: (name) {
-                    book.clientName = name;
+                    newResp = name;
                   },
                   decoration: InputDecoration(
                     labelText: book.clientName == '0'
@@ -153,7 +153,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
                 child: TextField(
                   keyboardType: TextInputType.datetime,
                   onChanged: (date) {
-                    book.date = date;
+                    newDate = date;
                   },
                   decoration: InputDecoration(
                     labelText: book.date != '0'
@@ -199,44 +199,20 @@ class _UpdateScreenState extends State<UpdateScreen> {
     // para alterar o status do livro para 'Disponível', por favor, insira a
     // data igual a '0'.
 
-    if (book.date == '0') {
-      setState(() {
-        book.date = '0';
-      });
-
-      if (book.clientName == '0' ||
-          book.clientName == '' ||
-          book.clientName == book.clientName) {
+    if (newDate != '' && newDate != '0' && newDate != null) {
+      if (newResp != '' && newResp != '0' && newResp != null) {
         setState(() {
-          book.clientName = '0';
-          book.status = 'Disponível';
-        });
-      }
-
-      if (book.clientName != '0') {
-        setState(() {
-          book.clientName = '0';
-        });
-      }
-    } else if (book.date != '0') {
-      setState(() {
-        book.date = book.date;
-      });
-
-      if (book.clientName != '0') {
-        setState(() {
-          book.clientName = book.clientName;
+          book.date = newDate;
+          book.clientName = newResp;
           book.status = 'Indisponível';
         });
       }
-
-      if (book.clientName == '0' || book.clientName == '') {
-        setState(() {
-          book.date = '0';
-          book.clientName = '0';
-          book.status = 'Disponível';
-        });
-      }
+    } else if (newDate == '0') {
+      setState(() {
+        book.date = '0';
+        book.clientName = '0';
+        book.status = 'Disponível';
+      });
     }
 
     Navigator.pushReplacement(
