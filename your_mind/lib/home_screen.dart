@@ -24,7 +24,6 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.white,
         shadowColor: Colors.indigo,
         elevation: 1.0,
-        toolbarHeight: 70.0,
         centerTitle: true,
       ),
       body: Body(),

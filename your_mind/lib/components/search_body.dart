@@ -28,7 +28,7 @@ class _SearchBodyState extends State<SearchBody> {
               padding: const EdgeInsets.all(8.0),
               child: TextField(
                 textInputAction: TextInputAction.search,
-                onSubmitted: (texto) {
+                onChanged: (texto) {
                   pesquisa = texto;
                 },
                 textAlign: TextAlign.start,

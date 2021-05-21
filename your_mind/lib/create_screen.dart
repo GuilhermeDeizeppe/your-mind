@@ -16,7 +16,6 @@ class CreateBook extends StatelessWidget {
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
         elevation: 0,
-        toolbarHeight: 70,
       ),
       body: CreateBody(),
       bottomNavigationBar: NavBar(),

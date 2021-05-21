@@ -23,7 +23,6 @@ class DetailsScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         shadowColor: Colors.indigo,
         elevation: 0,
-        toolbarHeight: 70.0,
         centerTitle: true,
         leading: Builder(
           builder: (BuildContext context) {
