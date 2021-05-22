@@ -92,7 +92,7 @@ class _CreateBodyState extends State<CreateBody> {
                               if (cover != '' && cover != '0' && cover != null)
                                 {
                                   newBook = new Book(cover, title, author,
-                                      'Disponível', '0', '0'),
+                                      'Disponível', null, '0'),
                                   setState(() {
                                     Book.books.add(newBook);
                                   }),

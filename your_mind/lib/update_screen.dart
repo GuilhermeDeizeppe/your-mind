@@ -1,11 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:your_mind/details_screen.dart';
 
 import 'models/books.dart';
 
 class UpdateScreen extends StatefulWidget {
-  final Book book;
+  final Book book; // VARIABLE THAT STORES THE BOOK FROM THE ITEMCARD'S GRID
 
   const UpdateScreen({Key key, this.book}) : super(key: key);
 
@@ -14,9 +15,9 @@ class UpdateScreen extends StatefulWidget {
 }
 
 class _UpdateScreenState extends State<UpdateScreen> {
-  final Book book;
-  String newDate;
-  String newResp;
+  final Book book; // VARIABLE THAT STORES THE BOOK FROM THE ITEMCARD'S GRID
+  DateTime newDate; // VARIABLE TO WORK WITH DATE PICKER
+  String newResp; // VARIBLE TO WORK WITH TEXT FIELD
 
   _UpdateScreenState(this.book);
 
@@ -26,7 +27,6 @@ class _UpdateScreenState extends State<UpdateScreen> {
       appBar: appBarUpdateScreen(),
       backgroundColor: Colors.white,
       body: updateScreenBody(),
-      // bottomNavigationBar: NavBar(),
     );
   }
 
@@ -93,7 +93,12 @@ class _UpdateScreenState extends State<UpdateScreen> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 15.0),
                 child: Text(
-                  book.date != '0' ? 'Retirado em: ' + book.date : 'Em estoque',
+                  // TEXT RETIRADO EM / EM ESTOQUE
+                  book.date != null
+                      ? 'Retirado em: ' +
+                          DateFormat(DateFormat.YEAR_NUM_MONTH_DAY, "pt-Br")
+                              .format(book.date)
+                      : 'Em estoque',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.black,
@@ -104,6 +109,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 15.0),
                 child: Text(
+                  // TEXT RESPONSÁVEL
                   book.clientName != '0'
                       ? 'Responsável: ' + book.clientName
                       : 'Responsável: não consta',
@@ -117,6 +123,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 15.0),
                 child: Text(
+                  // TEXT BOOK STATUS
                   'Status: ' + book.status,
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -134,6 +141,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
+                  // "Responsável" TEXT FIELD
                   onChanged: (name) {
                     newResp = name;
                   },
@@ -142,31 +150,44 @@ class _UpdateScreenState extends State<UpdateScreen> {
                         ? 'Responsável'
                         : book.clientName,
                     border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25)),
+                      borderRadius: BorderRadius.circular(25),
+                    ),
                   ),
                   enabled: book.clientName == '0' ? true : false,
                 ),
               ),
+              SizedBox(
+                height: 15.0,
+                width: MediaQuery.of(context).size.width,
+              ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  keyboardType: TextInputType.datetime,
-                  onChanged: (date) {
-                    newDate = date;
+                child: FloatingActionButton.extended(
+                  // DATE PICKER BUTTON
+                  onPressed: () async {
+                    newDate = await showDatePicker(
+                      context: context,
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime(2000),
+                      lastDate: DateTime(2100),
+                    );
                   },
-                  decoration: InputDecoration(
-                    labelText: book.date != '0'
-                        ? 'Data de devolução'
-                        : 'Data de retirada',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25)),
-                  ),
+                  label: Text(book.date != null
+                      ? 'Data de devolução'
+                      : 'Data de retirada'),
+                  icon: Icon(Icons.calendar_today_outlined),
+                  elevation: 0,
+                  backgroundColor: Colors.white,
+                  foregroundColor: Colors.black,
+                  splashColor: Colors.white,
+                  heroTag: 'date',
                 ),
               ),
               SizedBox(
-                height: 35.0,
+                height: 50.0,
                 width: MediaQuery.of(context).size.width,
               ),
+              // "Salvar" BUTTON
               FloatingActionButton.extended(
                 onPressed: () => {
                   updateStatus(),
@@ -193,27 +214,33 @@ class _UpdateScreenState extends State<UpdateScreen> {
   }
 
   void updateStatus() {
-    // caso a data informada seja diferente de 0, mesmo sendo maior que a data de
-    // retirada, o aplicativo retornará o status 'Indisponível'.
-    // para alterar o status do livro para 'Disponível', por favor, insira a
-    // data igual a '0'.
+    // IN THIS METHOD, IF THE newDate IS BEFORE book.date, THE book.date WILL
+    // UPDATE AND STORE THE VALUE OF newDate.
 
-    if (newDate != '' && newDate != '0' && newDate != null) {
-      if (newResp != '' && newResp != '0' && newResp != null) {
-        setState(() {
-          book.date = newDate;
-          book.clientName = newResp;
-          book.status = 'Indisponível';
-        });
+    if (book.date == null) {
+      if (newDate != null) {
+        if (newResp != book.clientName &&
+            newResp != '' &&
+            newResp != '0' &&
+            newResp != null) {
+          setState(() {
+            book.date = newDate;
+            book.clientName = newResp;
+            book.status = 'Indisponível';
+          });
+        }
       }
-    } else if (newDate == '0') {
-      setState(() {
-        book.date = '0';
-        book.clientName = '0';
-        book.status = 'Disponível';
-      });
+    } else {
+      if (newDate.isAfter(book.date) || newDate.isAtSameMomentAs(book.date)) {
+        setState(() {
+          book.date = null;
+          book.clientName = '0';
+          book.status = 'Disponível';
+        });
+      } else if (newDate.isBefore(book.date)) {
+        book.date = newDate;
+      }
     }
-
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(

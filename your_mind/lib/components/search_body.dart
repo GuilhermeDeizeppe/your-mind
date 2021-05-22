@@ -14,16 +14,13 @@ class _SearchBodyState extends State<SearchBody> {
       color: Colors.white,
       padding: EdgeInsets.all(3.0),
       child: Container(
+        padding: EdgeInsets.all(8.0),
         height: MediaQuery.of(context).size.height / 6.5,
         width: MediaQuery.of(context).size.width,
         color: Colors.white,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(
-              height: 12.0,
-              width: MediaQuery.of(context).size.width,
-            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextField(
@@ -56,10 +53,6 @@ class _SearchBodyState extends State<SearchBody> {
                 ),
                 autofocus: true,
               ),
-            ),
-            SizedBox(
-              height: 25.0,
-              width: MediaQuery.of(context).size.width,
             ),
           ],
         ),

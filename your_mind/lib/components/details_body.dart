@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:your_mind/models/books.dart';
 import 'package:your_mind/update_screen.dart';
 
@@ -64,8 +65,10 @@ class _DetailsBodyState extends State<DetailsBody> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 5.0),
                   child: Text(
-                    book.date != '0'
-                        ? 'Retirado em: ' + book.date
+                    book.date != null
+                        ? 'Retirado em: ' +
+                            DateFormat(DateFormat.YEAR_NUM_MONTH_DAY, "pt-Br")
+                                .format(book.date)
                         : 'Em estoque',
                     textAlign: TextAlign.center,
                     style: TextStyle(
