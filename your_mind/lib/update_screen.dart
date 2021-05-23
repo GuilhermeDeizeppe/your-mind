@@ -217,21 +217,44 @@ class _UpdateScreenState extends State<UpdateScreen> {
     // IN THIS METHOD, IF THE newDate IS BEFORE book.date, THE book.date WILL
     // UPDATE AND STORE THE VALUE OF newDate.
 
+    // IF newDate OR newResp ARE NULL, AN ALERT DIALOG WILL POP UP ON THE SCREEN
+    // INFORMING THAT THESE VALUES ARE REQUIRED
+
+    // CHEKING IF THE book.clientName IS NULL, ZERO OR EMPTY. IF FALSE, THEN THE
+    // newResp TAKES THE VALUE OF book.clientName.
+    if (book.date != null &&
+        book.clientName != '0' &&
+        book.clientName != null) {
+      newResp = book.clientName;
+    }
+
+    //CHECKING IF newDate OR newResp ARE NULL
+    if (newDate == null || newResp == null || newResp == '') {
+      alertDialogNullDateOrName();
+    }
     if (book.date == null) {
       if (newDate != null) {
         if (newResp != book.clientName &&
             newResp != '' &&
             newResp != '0' &&
             newResp != null) {
+          // SETTING STATE AND PUSHING BACK TO THE DETAILS PAGE
           setState(() {
             book.date = newDate;
             book.clientName = newResp;
             book.status = 'Indisponível';
           });
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => DetailsScreen(book: book),
+            ),
+          );
         }
       }
-    } else {
+    } else if (newDate != null) {
       if (newDate.isAfter(book.date) || newDate.isAtSameMomentAs(book.date)) {
+        // CHEKING IF THE BOOK HAS BEEN RETURNED TO THE LIBRARY
         setState(() {
           book.date = null;
           book.clientName = '0';
@@ -240,12 +263,52 @@ class _UpdateScreenState extends State<UpdateScreen> {
       } else if (newDate.isBefore(book.date)) {
         book.date = newDate;
       }
+      // CHEKING IF ALL THE INPUTS ARE NOT NULL. IF TRUE, PUSHES BACK TO THE
+      // DETAILS PAGE
+      if (newDate != null && newResp != null && newResp != '') {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DetailsScreen(book: book),
+          ),
+        );
+      }
     }
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => DetailsScreen(book: book),
-      ),
+  }
+
+  // ALERT DIALOG
+  void alertDialogNullDateOrName() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Colors.red.shade300,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
+          title: Text(
+            'Atenção',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+          content: Text(
+            'A data e o nome do responsável são atributos obrigatórios.',
+            textAlign: TextAlign.center,
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text(
+                'OK',
+                style: TextStyle(color: Colors.white, fontSize: 17),
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }
