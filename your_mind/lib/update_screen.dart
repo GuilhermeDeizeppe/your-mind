@@ -6,7 +6,7 @@ import 'package:your_mind/details_screen.dart';
 import 'models/books.dart';
 
 class UpdateScreen extends StatefulWidget {
-  final Book book; // VARIABLE THAT STORES THE BOOK FROM THE ITEMCARD'S GRID
+  final Book book; // BOOK FROM THE ITEMCARD'S GRID
 
   const UpdateScreen({Key key, this.book}) : super(key: key);
 
@@ -15,7 +15,7 @@ class UpdateScreen extends StatefulWidget {
 }
 
 class _UpdateScreenState extends State<UpdateScreen> {
-  final Book book; // VARIABLE THAT STORES THE BOOK FROM THE ITEMCARD'S GRID
+  final Book book; // STORES THE BOOK FROM THE ITEMCARD'S GRID
   DateTime newDate; // VARIABLE TO WORK WITH DATE PICKER
   String newResp; // VARIBLE TO WORK WITH TEXT FIELD
 

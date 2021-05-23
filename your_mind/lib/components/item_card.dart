@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:your_mind/models/books.dart';
 
@@ -21,7 +23,6 @@ class _ItemCardState extends State<ItemCard> {
     return GestureDetector(
       onTap: widget.press,
       child: Column(
-        // crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
             child: Container(
@@ -30,9 +31,14 @@ class _ItemCardState extends State<ItemCard> {
               width: 160,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
-                // color: Colors.grey,
               ),
-              child: Image.asset(widget.book.cover),
+              child: widget.book.cover == null
+                  // IF THE BOOK COVER IS NULL, A MISSING IMAGE IS PLACED.
+                  ? Image.asset('assets/images/missing.png')
+                  : widget.book.cover.contains('assets/images/')
+                      // DEFINES WHICH WAY TO LOAD THE CURRENT BOOK'S COVER.
+                      ? Image.asset(widget.book.cover)
+                      : Image(image: FileImage(File(widget.book.cover))),
             ),
           ),
           Padding(

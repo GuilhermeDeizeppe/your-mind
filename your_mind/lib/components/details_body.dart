@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:your_mind/models/books.dart';
@@ -13,9 +15,7 @@ class DetailsBody extends StatefulWidget {
 }
 
 class _DetailsBodyState extends State<DetailsBody> {
-  final Book book;
-
-  String newDate = 'vazio';
+  final Book book; // THE CURRENT BOOK
 
   _DetailsBodyState(this.book);
   @override
@@ -32,14 +32,22 @@ class _DetailsBodyState extends State<DetailsBody> {
             Column(
               children: [
                 Align(
+                  // BOOK'S COVER
                   alignment: Alignment.topCenter,
-                  child: Image.asset(
-                    book.cover,
-                    height: 250,
-                    width: 200,
-                  ),
+                  child: widget.book.cover == null
+                      // IF THE BOOK COVER IS NULL, A MISSING IMAGE IS PLACED.
+                      ? Image.asset('assets/images/missing.png')
+                      : widget.book.cover.contains('assets/images/')
+                          // DEFINES WHICH WAY TO LOAD THE CURRENT BOOK'S COVER.
+                          ? Image.asset(widget.book.cover,
+                              height: 250, width: 200)
+                          : Image(
+                              image: FileImage(File(widget.book.cover)),
+                              height: 250,
+                              width: 200),
                 ),
                 Padding(
+                  // BOOK'S TITLE
                   padding: const EdgeInsets.all(10.0),
                   child: Text(
                     book.title,
@@ -52,6 +60,7 @@ class _DetailsBodyState extends State<DetailsBody> {
                   ),
                 ),
                 Padding(
+                  // BOOK'S AUTHOR
                   padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 5.0),
                   child: Text(
                     'Autor: ' + book.author,
@@ -63,6 +72,7 @@ class _DetailsBodyState extends State<DetailsBody> {
                   ),
                 ),
                 Padding(
+                  // BOOK'S DATE
                   padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 5.0),
                   child: Text(
                     book.date != null
@@ -78,6 +88,7 @@ class _DetailsBodyState extends State<DetailsBody> {
                   ),
                 ),
                 Padding(
+                  // BOOK'S CLIENT NAME
                   padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 10.0),
                   child: Text(
                     book.clientName != '0'
@@ -91,6 +102,7 @@ class _DetailsBodyState extends State<DetailsBody> {
                   ),
                 ),
                 Padding(
+                  // BOOK'S STATUS
                   padding: const EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 10.0),
                   child: Text(
                     'Status: ' + book.status,
@@ -111,6 +123,7 @@ class _DetailsBodyState extends State<DetailsBody> {
               width: MediaQuery.of(context).size.width,
             ),
             Row(
+              // "Alterar" FLOATING BUTTON
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 FloatingActionButton.extended(
