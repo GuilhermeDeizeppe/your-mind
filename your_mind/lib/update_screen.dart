@@ -6,7 +6,7 @@ import 'package:your_mind/details_screen.dart';
 import 'models/books.dart';
 
 class UpdateScreen extends StatefulWidget {
-  final Book book; // BOOK FROM THE ITEMCARD'S GRID
+  final Book book; // BOOK FROM THE ITEMCARDS GRID
 
   const UpdateScreen({Key key, this.book}) : super(key: key);
 
@@ -15,7 +15,7 @@ class UpdateScreen extends StatefulWidget {
 }
 
 class _UpdateScreenState extends State<UpdateScreen> {
-  final Book book; // STORES THE BOOK FROM THE ITEMCARD'S GRID
+  final Book book; // STORES THE BOOK FROM THE ITEMCARDS GRID
   DateTime newDate; // VARIABLE TO WORK WITH DATE PICKER
   String newResp; // VARIBLE TO WORK WITH TEXT FIELD
 
@@ -173,8 +173,8 @@ class _UpdateScreenState extends State<UpdateScreen> {
                     );
                   },
                   label: Text(book.date != null
-                      ? 'Data de devolução'
-                      : 'Data de retirada'),
+                      ? 'Data de Devolução'
+                      : 'Data de Retirada'),
                   icon: Icon(Icons.calendar_today_outlined),
                   elevation: 0,
                   backgroundColor: Colors.white,
@@ -214,14 +214,17 @@ class _UpdateScreenState extends State<UpdateScreen> {
   }
 
   void updateStatus() {
-    // IN THIS METHOD, IF THE newDate IS BEFORE book.date, THE book.date WILL
-    // UPDATE AND STORE THE VALUE OF newDate.
+    /*
+    IN THIS METHOD, IF THE newDate IS BEFORE book.date, THE book.date WILL
+    UPDATE AND STORE THE VALUE OF newDate.
 
-    // IF newDate OR newResp ARE NULL, AN ALERT DIALOG WILL POP UP ON THE SCREEN
-    // INFORMING THAT THESE VALUES ARE REQUIRED
+    IF newDate OR newResp ARE NULL, AN ALERT DIALOG WILL POP UP ON THE SCREEN
+    INFORMING THAT THESE VALUES ARE REQUIRED
 
-    // CHEKING IF THE book.clientName IS NULL, ZERO OR EMPTY. IF FALSE, THEN THE
-    // newResp TAKES THE VALUE OF book.clientName.
+    CHEKING IF THE book.clientName IS NULL, ZERO OR EMPTY. IF FALSE, THEN THE
+    newResp TAKES THE VALUE OF book.clientName.
+    */
+
     if (book.date != null &&
         book.clientName != '0' &&
         book.clientName != null) {
@@ -276,8 +279,8 @@ class _UpdateScreenState extends State<UpdateScreen> {
     }
   }
 
-  // ALERT DIALOG
   void alertDialogNullDateOrName() {
+    // ALERT DIALOG
     showDialog(
       context: context,
       builder: (BuildContext context) {

@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:your_mind/models/books.dart';
 
 class ItemCard extends StatefulWidget {
-  final Book book;
-  final Function press;
+  final Book book; // THE BOOK THAT COMES FROM GRID'S INDEX
+  final Function
+      press; // THE FUNCTION THAT COMES FROM GRID AND DEFINES THE onTap ATTRIBUTE
 
   const ItemCard({
     Key key,
@@ -21,7 +22,7 @@ class _ItemCardState extends State<ItemCard> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: widget.press,
+      onTap: widget.press, // DEFINED BY THE FUNCTION THAT COMES FROM THE GRID
       child: Column(
         children: [
           Expanded(
@@ -44,6 +45,7 @@ class _ItemCardState extends State<ItemCard> {
           Padding(
             padding: const EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
             child: Text(
+              // TITLE
               widget.book.title,
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -56,6 +58,7 @@ class _ItemCardState extends State<ItemCard> {
           Padding(
             padding: const EdgeInsets.only(bottom: 8.0),
             child: Text(
+              // STATUS
               widget.book.status,
               style: TextStyle(
                 fontSize: 12,

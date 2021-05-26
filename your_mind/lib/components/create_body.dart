@@ -215,6 +215,7 @@ class _CreateBodyState extends State<CreateBody> {
       
       IT WORKS WITH THE DEVICE CAMERA SOURCE AND THE DEVICE GALLERY SOURCE.
     */
+
     final pickedFile = await _picker.getImage(source: source);
 
     if (pickedFile != null) {
@@ -227,14 +228,16 @@ class _CreateBodyState extends State<CreateBody> {
   }
 
   void createBookButton() {
-    // THIS METHOD HOLDS THE BUTTON LOGIC.
-    //
-    // IF ANY OF THE TEXT FIELDS IN THE CREATE BOOK'S PAGE IS NULL, EMPTY OR
-    // EQUAL TO ZERO, AN ALERT DIALOG WILL POP UP ON THE SCREEN TO ALERT THE
-    // USER.
-    //
-    // IF ALL THE FIELDS CONTAINS VALUES, THE BOOK WILL BE CORRECTLY CREATED
-    // AND THE SCREEN WILL BE PUSHED TO APP'S HOME SCREEN.
+    /*
+    THIS METHOD HOLDS THE BUTTON LOGIC.
+    
+    IF ANY OF THE TEXT FIELDS IN THE CREATE BOOK'S PAGE IS NULL, EMPTY OR
+    EQUAL TO ZERO, AN ALERT DIALOG WILL POP UP ON THE SCREEN TO ALERT THE
+    USER.
+    
+    IF ALL THE FIELDS CONTAINS VALUES, THE BOOK WILL BE CORRECTLY CREATED
+    AND THE SCREEN WILL BE PUSHED TO APP'S HOME SCREEN.
+    */
 
     if (title != '' && title != '0' && title != null) {
       if (author != '' && author != '0' && author != null) {
@@ -257,8 +260,8 @@ class _CreateBodyState extends State<CreateBody> {
     }
   }
 
-  // ALERT DIALOG
   void alertDialogNullFields() {
+    // ALERT DIALOG
     showDialog(
       context: context,
       builder: (BuildContext context) {

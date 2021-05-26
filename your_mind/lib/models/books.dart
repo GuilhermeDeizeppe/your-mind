@@ -1,6 +1,8 @@
 class Book {
   String cover, title, author, status, clientName;
   DateTime date;
+
+  // STATIC LIST TO SIMULATE A DATABASE
   static List<Book> books = [
     Book('assets/images/1984.jpg', '1984', 'George Orwell', 'Disponível', null,
         '0'),

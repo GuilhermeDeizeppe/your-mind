@@ -17,6 +17,7 @@ class NavBar extends StatelessWidget {
             Column(
               children: [
                 IconButton(
+                  // "BIBLIOTECA" BUTTON
                   icon: Icon(Icons.menu_book),
                   onPressed: () => Navigator.pushReplacement(context,
                       MaterialPageRoute(builder: (context) => HomeScreen())),
@@ -36,6 +37,7 @@ class NavBar extends StatelessWidget {
             Column(
               children: [
                 IconButton(
+                  // "BUSCAR" BUTTON
                   icon: Icon(Icons.search),
                   onPressed: () {
                     Navigator.pushReplacement(
@@ -59,6 +61,7 @@ class NavBar extends StatelessWidget {
             Column(
               children: [
                 IconButton(
+                  // "CRIAR" BUTTON
                   icon: Icon(Icons.add_circle_outline_sharp),
                   onPressed: () {
                     Navigator.pushReplacement(context,

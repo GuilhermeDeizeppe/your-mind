@@ -32,7 +32,7 @@ class _DetailsBodyState extends State<DetailsBody> {
             Column(
               children: [
                 Align(
-                  // BOOK'S COVER
+                  // BOOK COVER
                   alignment: Alignment.topCenter,
                   child: widget.book.cover == null
                       // IF THE BOOK COVER IS NULL, A MISSING IMAGE IS PLACED.
@@ -47,7 +47,7 @@ class _DetailsBodyState extends State<DetailsBody> {
                               width: 200),
                 ),
                 Padding(
-                  // BOOK'S TITLE
+                  // BOOK TITLE
                   padding: const EdgeInsets.all(10.0),
                   child: Text(
                     book.title,
@@ -60,7 +60,7 @@ class _DetailsBodyState extends State<DetailsBody> {
                   ),
                 ),
                 Padding(
-                  // BOOK'S AUTHOR
+                  // BOOK AUTHOR
                   padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 5.0),
                   child: Text(
                     'Autor: ' + book.author,
@@ -72,7 +72,7 @@ class _DetailsBodyState extends State<DetailsBody> {
                   ),
                 ),
                 Padding(
-                  // BOOK'S DATE
+                  // BOOK DATE
                   padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 5.0),
                   child: Text(
                     book.date != null
@@ -88,7 +88,7 @@ class _DetailsBodyState extends State<DetailsBody> {
                   ),
                 ),
                 Padding(
-                  // BOOK'S CLIENT NAME
+                  // BOOK CLIENT NAME
                   padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 10.0),
                   child: Text(
                     book.clientName != '0'
@@ -102,7 +102,7 @@ class _DetailsBodyState extends State<DetailsBody> {
                   ),
                 ),
                 Padding(
-                  // BOOK'S STATUS
+                  // BOOK STATUS
                   padding: const EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 10.0),
                   child: Text(
                     'Status: ' + book.status,

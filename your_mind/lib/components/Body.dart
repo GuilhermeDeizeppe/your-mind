@@ -24,6 +24,7 @@ class _BodyState extends State<Body> {
         itemBuilder: (context, index) => ItemCard(
           book: Book.books[index],
           press: () => Navigator.pushReplacement(
+            // FUNCTION THAT DEFINES ITEMGRID onTap ATTRIBUTE
             context,
             MaterialPageRoute(
               builder: (context) => DetailsScreen(
