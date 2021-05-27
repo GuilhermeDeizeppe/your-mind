@@ -1,32 +1,43 @@
 import 'package:flutter/material.dart';
 
+import '../details_screen.dart';
+import '../models/books.dart';
+import 'item_card.dart';
+
 class SearchBody extends StatefulWidget {
   @override
   _SearchBodyState createState() => _SearchBodyState();
 }
 
 class _SearchBodyState extends State<SearchBody> {
-  String pesquisa;
+  var itemsFound = []; // THE BOOKS IN THE GRID ARE STORED IN THIS VARIABLE
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      padding: EdgeInsets.all(3.0),
-      child: Container(
-        padding: EdgeInsets.all(8.0),
-        height: MediaQuery.of(context).size.height / 6.5,
-        width: MediaQuery.of(context).size.width,
+    return new Scaffold(
+      body: Container(
         color: Colors.white,
+        padding: EdgeInsets.all(3.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextField(
+                // "PESQUISAR" TEXT FIELD
                 textInputAction: TextInputAction.search,
                 onChanged: (texto) {
-                  pesquisa = texto;
+                  // CREATES A VARIABLE TO STORE THE RESULT BOOKS
+                  var listBooksFound = Book.books
+                      .where((book) => book.title
+                          .toLowerCase()
+                          .contains(texto.toLowerCase()))
+                      .toList();
+                  setState(() {
+                    // CLEARS THE GRID AND REFRESH WITH THE NEW SEARCH RESULTS
+                    itemsFound.clear();
+                    itemsFound.addAll(listBooksFound);
+                  });
                 },
                 textAlign: TextAlign.start,
                 cursorColor: Colors.black,
@@ -52,6 +63,28 @@ class _SearchBodyState extends State<SearchBody> {
                   ),
                 ),
                 autofocus: true,
+              ),
+            ),
+            Expanded(
+              child: GridView.builder(
+                // THE SEARCH RESULTS BOOKS
+                itemCount: itemsFound.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 0.70,
+                  crossAxisSpacing: 5.0,
+                ),
+                itemBuilder: (context, index) => ItemCard(
+                  book: itemsFound[index],
+                  press: () => Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DetailsScreen(
+                        book: itemsFound[index],
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ),
           ],
